@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>Sneckers</h1>
+                </div>
+                <img src="./cross.svg" alt="" class="menubar" onclick="displaymenu()">
+
+                <ul>
+                 <img src="./white-cross.svg" alt="" onclick="hidemenu()">
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">Man</a></li>
+                    <li><a href="#">women</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="cart-contents">
+                    <img src="./cart.svg" alt="">
+                    <span class="qty-label">3</span>
+                    <div class="user-icon">
+                        <img src="./user1.png" alt="">
+                    </div>
+                    <div class="cart-box">
+                        <p class="para">Cart</p>
+                        <div class="pro-content">
+                            <img src="./work-1.png" alt="">
+                            <div class="p-details">
+                                <p class="pro-text">
+                                    Full limited Edition Sneckers
+                                </p>
+                                <p class="price">
+                                    $100 <span>x</span> <span class="times">1</span> <span class="total">$100</span>
+                                </p>
+                            </div>
+                            <div class="trash">
+                                <img src="./trash.png" alt="">
+                            </div>
+
+                        </div>
+                        <div class="cart-empty">
+                            <p>Your cart is empty :)</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <main id="product">
+        <div class="product-container">
+            <div class="product-wrapper">
+                <div class="image">
+                    <div class="img-thumb">
+                        <img src="./shoes.jpg" alt="">
+
+                        <div class="small-img">
+                            <img src="./shoes-0.jpg" alt="" class="active">
+                            <img src="./shoes-1.jpg" alt="">
+                            <img src="./shoes-2.jpg" alt="">
+                            <img src="./shoes-3.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <p class="company-text">Sneckers Company</p>
+                    <h2>Fall limited Edition Sneckers</h2>
+                    <p class="product-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam rerum voluptas tempore placeat
+                        fuga, nihil fugit. Veritatis exercitationem doloremque id. Eum minima, ab dolorem dolor delectus
+                        magni neque ratione sed?
+                    </p>
+                    <div class="price">
+                        <div class="discount-price">
+                            <p class="normal">$100</p>
+                            <p><span class="discount">50%</span></p>
+                        </div>
+
+                        <p class="total-price">$200</p>
+
+                        <div class="qty">
+                            <div class="btns">
+                                <button type="button" class="decreament">-</button>
+                                <button type="button" class="qty-number">1</button>
+                                <button type="button" class="increament">+</button>
+                            </div>
+                            <button class="add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <div class="modal">
+        <div class="modal-wrapper">
+            <img src="./white-cross.svg" alt="" class="icon">
+            <div class="modal-image">
+                <div class="img-thumb-modal">
+                    <img src="./shoes.jpg" alt="">
+
+                    <div class="small-img-modal">
+                        <img src="./shoes-0.jpg" alt="" class="active">
+                        <img src="./shoes-1.jpg" alt="">
+                        <img src="./shoes-2.jpg" alt="">
+                        <img src="./shoes-3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    let carticon = document.querySelector(".cart-contents img");
+    let cartbox = document.querySelector('.cart-box');
+    let procontent = document.querySelector('.pro-content');
+    let emptycart = document.querySelector('.cart-empty');
+
+
+    let largeimage = document.querySelector('.img-thumb img');
+    let smallimage = document.querySelectorAll('.small-img img');
+
+    smallimage.forEach((img,indx)=>{
+         img.addEventListener('click',(e)=>{
+            largeimage.src = `./shoes-${indx}.jpg`;
+            smallimage.forEach((small)=> small.classList.remove('active'));
+            img.classList.add('active');
+         })
+    })
+
+
+    let largeimagemodal = document.querySelector('.img-thumb-modal img');
+    let smallimagemodal = document.querySelectorAll('.small-img-modal img');
+
+    smallimagemodal.forEach((modalimg,modalindx)=>{
+          modalimg.addEventListener('click',(e)=>{
+            largeimagemodal.src = `./shoes-${modalindx}.jpg`;
+            smallimagemodal.forEach((small)=> small.classList.remove('active'));
+             modalimg.classList.add('active');
+
+
+         })
+    })
+
+
+    carticon.addEventListener("click", () => {
+
+        if (qtylabel.style.display == 'block') {
+            procontent.style.display = "block";
+            emptycart.style.display = "none";
+            cartbox.classList.toggle('display');
+
+        }
+
+        else {
+            cartbox.classList.toggle('display');
+            procontent.style.display = 'none';
+        }
+
+    })
+
+    let image = document.querySelector('.image img');
+    let modal = document.querySelector('.modal');
+    image.addEventListener('click', () => {
+        modal.style.display = 'block';
+    })
+
+
+    let crossicon = document.querySelector('.icon').addEventListener('click',()=>{
+        modal.style.display = 'none';
+    })
+
+
+
+    let qty = document.querySelector(".qty-number");
+    let decr = document.querySelector('.decreament');
+    let incr = document.querySelector('.increament');
+    let price = document.querySelector('.normal');
+    let realprice = document.querySelector('.total-price');
+
+
+    let proprice = 100;
+    let totalprice = 150;
+    let totalqty = (qty.innerHTML);
+
+
+    decr.addEventListener('click', () => {
+        if (totalqty > 1) {
+            totalqty--;
+            qty.innerHTML = totalqty;
+            proprice = totalqty * 100;
+            price.innerHTML = `$${proprice}`;
+            realprice.innerHTML = `$${proprice * 2}`
+
+        }
+        let priceIncart = document.querySelector('.price').innerHTML = `$100 x ${totalqty} = $${proprice}`;
+
+
+    })
+
+    incr.addEventListener('click', () => {
+        totalqty++;
+        qty.innerHTML = totalqty;
+        proprice = totalqty * 100;
+        price.innerHTML = `$${proprice}`;
+
+        realprice.innerHTML = `$${proprice * 2}`
+
+        console.log(price);
+        let priceIncart = document.querySelector('.price').innerHTML = `$100 x ${totalqty} = $${proprice}`;
+
+    })
+
+    let addcart = document.querySelector('.add-cart');
+    let qtylabel = document.querySelector('.qty-label');
+
+
+    addcart.addEventListener('click', () => {
+        qtylabel.style.display = "block";
+    })
+
+
+    let trash = document.querySelector('.trash img');
+
+    trash.addEventListener('click', () => {
+        qtylabel.style.display = "none";
+        emptycart.style.display = 'block';
+        procontent.style.display = 'none';
+
+    })
+
+
+let navbar = document.querySelector('nav ul');
+
+function displaymenu(){
+ navbar.style.left = "-3rem";
+}
+
+function hidemenu(){
+    navbar.style.left = '-64%';
+}
+
+</script>
+
+</html>
