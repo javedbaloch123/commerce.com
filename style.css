@@ -413,6 +413,20 @@ nav ul img {
 
 @media(max-width: 768px) {
 
+     .qty-label {
+        position: absolute;
+        background-color: orange;
+        border-radius: 10px;
+        color: white;
+        right: 57px;
+        top: 5px;
+        width: 15px;
+        height: 15px;
+        text-align: center;
+        font-size: large;
+        cursor: pointer;
+        display: none;
+    }
     .product-content {
         display: flex;
         flex-direction: column;
