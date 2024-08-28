@@ -423,7 +423,7 @@ nav ul img {
         width: 15px;
         height: 15px;
         text-align: center;
-        font-size: large;
+        font-size:  12px;
         cursor: pointer;
         display: none;
     }
