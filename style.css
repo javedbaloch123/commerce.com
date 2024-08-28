@@ -429,6 +429,7 @@ nav ul img {
         top: 0;
         left: -64%;
         align-items: start;
+        justify-content: flex-start;
         transition: .3s;
         gap: 20px;
 
@@ -446,10 +447,13 @@ nav ul img {
         right: 0;
     }
 
-    nav ul li {
+    nav ul> li {
         cursor: pointer;
         position: relative;
-        top: -400px;
+    }
+
+    .first-li{
+        margin-top: 4rem;
     }
 
     
